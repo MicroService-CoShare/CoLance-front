@@ -19,7 +19,7 @@ type ReclamationMutateError = ApiErrorResponse & {
   errorKey: 'name_already_used';
 };
 
-const reclamation_BASE_URL = '/reclamation';
+const reclamation_BASE_URL = '/reclamation/api/reclamations/';
 
 const reclamationKeys = createQueryKeys('reclamationService', {
   reclamation: (params: { page?: number; size?: number }) => [params],
@@ -27,39 +27,9 @@ const reclamationKeys = createQueryKeys('reclamationService', {
   ReclamationForm: null,
 });
 
-export const useReclamationList = (
-  { page = 0, size = 10 } = {},
-  queryOptions: UseQueryOptions<ReclamationList> = {}
-) => {
-  const query = useQuery({
-    queryKey: reclamationKeys.reclamation({ page, size }).queryKey,
-    queryFn: async () => {
-      const response = await Axios.get(reclamation_BASE_URL, {
-        params: { page, size, sort: 'id,desc' },
-      });
-      return zReclamationList().parse({
-        reclamation: response.data,
-        totalItems: response.headers?.['x-total-count'],
-      });
-    },
-    keepPreviousData: true,
-    ...queryOptions,
-  });
-
-  const reclamation = query.data?.reclamation;
-  const totalItems = query.data?.totalItems ?? 0;
-  const totalPages = Math.ceil(totalItems / size);
-  const hasMore = page + 1 < totalPages;
-  const isLoadingPage = query.isFetching;
-
-  return {
-    reclamation,
-    totalItems,
-    hasMore,
-    totalPages,
-    isLoadingPage,
-    ...query,
-  };
+export const useReclamationList = async () => {
+  const response = await Axios.get(reclamation_BASE_URL);
+  return response;
 };
 
 export const useReclamation = (

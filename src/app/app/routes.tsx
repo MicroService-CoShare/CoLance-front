@@ -17,6 +17,9 @@ import { LoginModalInterceptor } from '@/features/auth/LoginModalInterceptor';
 import PageLogin from '@/features/auth/PageLogin';
 import PageLogout from '@/features/auth/PageLogout';
 import PageDashboard from '@/features/dashboard/PageDashboard';
+import PageReclamation from '@/features/reclamation/PageReclamation';
+import PageReclamationCreate from '@/features/reclamation/PageReclamationCreate';
+import PageReclamations from '@/features/reclamation/PageReclamations';
 import { Layout } from '@/layout/Layout';
 import { Loader } from '@/layout/Loader';
 
@@ -147,6 +150,62 @@ export const routes = [
           },
           {
             path: 'repositories',
+            children: [
+              { path: '', element: <PageRepositories /> },
+              { path: 'create', element: <PageRepositoryCreate /> },
+              {
+                path: ':id',
+                children: [
+                  { path: '', element: <PageRepository /> },
+                  { path: 'update', element: <PageRepositoryUpdate /> },
+                ],
+              },
+            ],
+          },
+          {
+            path: 'reclamation',
+            children: [
+              { path: '', element: <PageReclamations /> },
+              { path: 'create', element: <PageReclamationCreate /> },
+              {
+                path: ':id',
+                children: [
+                  { path: '', element: <PageReclamation /> },
+                  { path: 'update', element: <PageRepositoryUpdate /> },
+                ],
+              },
+            ],
+          },
+          {
+            path: 'offre',
+            children: [
+              { path: '', element: <PageRepositories /> },
+              { path: 'create', element: <PageRepositoryCreate /> },
+              {
+                path: ':id',
+                children: [
+                  { path: '', element: <PageRepository /> },
+                  { path: 'update', element: <PageRepositoryUpdate /> },
+                ],
+              },
+            ],
+          },
+          {
+            path: 'product',
+            children: [
+              { path: '', element: <PageRepositories /> },
+              { path: 'create', element: <PageRepositoryCreate /> },
+              {
+                path: ':id',
+                children: [
+                  { path: '', element: <PageRepository /> },
+                  { path: 'update', element: <PageRepositoryUpdate /> },
+                ],
+              },
+            ],
+          },
+          {
+            path: 'forum',
             children: [
               { path: '', element: <PageRepositories /> },
               { path: 'create', element: <PageRepositoryCreate /> },

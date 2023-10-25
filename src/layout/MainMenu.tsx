@@ -13,13 +13,13 @@ export const MainMenu = ({ ...rest }) => {
   const { isAdmin } = useAccount();
   return (
     <Stack direction="row" spacing="1" {...rest}>
-      <MainMenuItem to="/">{t('layout:mainMenu.dashboard')}</MainMenuItem>
-      <MainMenuItem to="/repositories">
-        {t('layout:mainMenu.repositories')}
-      </MainMenuItem>
-      {isAdmin && (
+      <MainMenuItem to="/reclamation">Reclamation</MainMenuItem>
+      <MainMenuItem to="/offre">Offre</MainMenuItem>
+      <MainMenuItem to="/product">Product</MainMenuItem>
+      <MainMenuItem to="/forum">Forum</MainMenuItem>
+      {/*isAdmin && (
         <MainMenuItem to="/admin">{t('layout:mainMenu.admin')}</MainMenuItem>
-      )}
+      )*/}
     </Stack>
   );
 };

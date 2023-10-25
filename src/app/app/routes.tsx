@@ -104,7 +104,52 @@ export const routes = [
           </GuardPublicOnly>
         ),
       },
+     
       {
+        path: 'account',
+        element: (
+          <GuardPublicOnly>
+            <Outlet />
+          </GuardPublicOnly>
+        ),
+        children: [
+          {
+            path: 'activate',
+            element: <PageActivate />,
+          },
+          {
+            path: 'register',
+            element: <PageRegister />,
+          },
+          {
+            path: 'reset',
+            element: <PageResetPasswordRequest />,
+          },
+          {
+            path: 'finish',
+            element: <PageResetPasswordConfirm />,
+          },
+        ],
+      },
+
+      /**
+       * Authenticated Routes
+       */
+      {
+        path: '',
+        element: (
+          //<Authentificated>
+            <Layout>
+              <Outlet />
+            </Layout>
+          
+        ),
+        children: [
+          {
+            path: '',
+            element: <PageDashboard />,
+          },
+           {
         path: 'reclamation',
         children: [
           { path: '', element: <PageReclamations /> },
@@ -160,50 +205,6 @@ export const routes = [
           },
         ],
       },
-      {
-        path: 'account',
-        element: (
-          <GuardPublicOnly>
-            <Outlet />
-          </GuardPublicOnly>
-        ),
-        children: [
-          {
-            path: 'activate',
-            element: <PageActivate />,
-          },
-          {
-            path: 'register',
-            element: <PageRegister />,
-          },
-          {
-            path: 'reset',
-            element: <PageResetPasswordRequest />,
-          },
-          {
-            path: 'finish',
-            element: <PageResetPasswordConfirm />,
-          },
-        ],
-      },
-
-      /**
-       * Authenticated Routes
-       */
-      {
-        path: '',
-        element: (
-          <GuardAuthenticated>
-            <Layout>
-              <Outlet />
-            </Layout>
-          </GuardAuthenticated>
-        ),
-        children: [
-          {
-            path: '',
-            element: <PageDashboard />,
-          },
           {
             path: 'repositories',
             children: [

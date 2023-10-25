@@ -57,7 +57,7 @@ export default function PageReclamationCreate() {
       <Formiz connect={form}>
         <form noValidate onSubmit={form.submit}>
           <PageTopBar showBack onBack={() => navigate('/reclamation')}>
-            <Heading size="md">{t('repositories:create.title')}</Heading>
+            <Heading size="md">Create New Reclamation</Heading>
           </PageTopBar>
           <PageContent>
             <ReclamationForm />
@@ -72,7 +72,7 @@ export default function PageReclamationCreate() {
                 variant="@primary"
                 isLoading={createReclamation.isLoading}
               >
-                {t('repositories:create.action.save')}
+                Creat Reclamation
               </Button>
             </ButtonGroup>
           </PageBottomBar>

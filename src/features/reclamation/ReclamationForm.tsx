@@ -14,18 +14,39 @@ export const ReclamationForm = () => {
       <CardBody>
         <Stack spacing={4}>
           <FieldInput
-            name="name"
-            label={t('repositories:data.name.label')}
+            name="titre"
+            label="title"
             required={t('repositories:data.name.required')}
-          />
-          <FieldInput
-            name="link"
-            required={t('repositories:data.link.required')}
-            label={t('repositories:data.link.label')}
           />
           <FieldTextarea
             name="description"
-            label={t('repositories:data.description.label')}
+            label="Description"
+            required={t('repositories:data.name.required')}
+          />
+          <FieldInput
+            name="statut"
+            label="status"
+            required={t('repositories:data.name.required')}
+          />
+          <FieldInput
+            name="priorite"
+            label="priority"
+            required={t('repositories:data.name.required')}
+          />
+          <FieldTextarea
+            name="notesInternes"
+            label="notes Interne"
+            required={t('repositories:data.name.required')}
+          />
+          <FieldTextarea
+            name="feedbackUtilisateur"
+            label="Feedback User"
+            required={t('repositories:data.name.required')}
+          />
+          <FieldInput
+            name="typeReclamation"
+            label="type Reclamation"
+            required={t('repositories:data.name.required')}
           />
         </Stack>
       </CardBody>

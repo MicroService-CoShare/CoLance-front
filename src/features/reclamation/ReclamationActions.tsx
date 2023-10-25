@@ -33,13 +33,13 @@ export const RclamationAction = ({
   const toastError = useToastError();
 
   const ReclamationRemove = useReclamationRemove({
-    onSuccess: (_, { name }) => {
+    onSuccess: (_) => {
       toastSuccess({
         title: t('repositories:create.feedbacks.updateError.title'),
-        description: name,
+        description: 'name',
       });
     },
-    onError: (_, { name }) => {
+    onError: (_) => {
       toastError({
         title: 'hot haga',
         description: 'hot haga',

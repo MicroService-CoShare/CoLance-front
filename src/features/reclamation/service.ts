@@ -110,13 +110,22 @@ export const useReclamationCreate = (
   config: UseMutationOptions<
     Reclamation,
     AxiosError<ReclamationMutateError>,
-    Pick<Reclamation, 'name' | 'link' | 'description'>
+    Pick<
+      Reclamation,
+      | 'titre'
+      | 'description'
+      | 'statut'
+      | 'priorite'
+      | 'notesInternes'
+      | 'feedbackUtilisateur'
+      | 'typeReclamation'
+    >
   > = {}
 ) => {
   const queryClient = useQueryClient();
   return useMutation(
     async (payload) => {
-      const response = await Axios.post('/reclamation', payload);
+      const response = await Axios.post(reclamation_BASE_URL, payload);
       return zReclamation().parse(response.data);
     },
     {
@@ -133,13 +142,13 @@ export const useReclamationRemove = (
   config: UseMutationOptions<
     void,
     AxiosError<ApiErrorResponse>,
-    Pick<Reclamation, 'id' | 'name'>
+    Pick<Reclamation, 'id'>
   > = {}
 ) => {
   const queryClient = useQueryClient();
   return useMutation(
     async (Reclamation) => {
-      await Axios.delete(`/reclamation/${Reclamation.id}`);
+      await Axios.delete(`/reclamation/api/reclamations/${Reclamation.id}`);
     },
     {
       ...config,
